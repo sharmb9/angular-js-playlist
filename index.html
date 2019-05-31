@@ -8,15 +8,22 @@
     <script src="app\app.js"></script>
   </head>
   <body>
+      
     <header ng-include="'header.html'"></header>
+    <div class="content">
     <div ng-controller="NinjaController">
-      <input type="text" ng-model="search">
-      <p>{{message}}</p>
+      <button ng-click = " order = 'name' ">Order by name</button>
+      <button ng-click = " order = 'belt' ">Order by belt</button>
+      <button ng-click = " order = 'rate' ">Order by rate</button>
+      <input type="text" ng-model="search" placeholder="Search for a ninja">
         <ol>
-          <li ng-repeat="ninja in ninjas | orderBy: '-name' | filter: search">
-            {{ninja.name}} - {{ninja.rate | currency}}
+          <li ng-repeat="ninja in ninjas | orderBy: order | filter: search" | ng-show="ninja.available">
+            <h3>{{ninja.name}} - {{ninja.rate | currency}}</h3>
+            <div class="remove" ng-click = "removeNinja(ninja)">x</div>
+            <span class="belt" style="background: {{ninja.belt}}" >{{ninja.belt}} belt </span>
           </li>
         </ol>
-    </div>
+      </div>
+  </div>
   </body>
 </html>

@@ -3,28 +3,36 @@ var myNinjaApp = angular.module('myNinjaApp', []); //variable for the name of th
 //myNinjasApp is the variable(LHS)
 myNinjaApp.controller('NinjaController', [ '$scope', function($scope){
 
-    $scope.message="Hi I am a text, blah";
+    $scope.removeNinja = function(ninja){
+        var removeNinja = $scope.ninjas.indexOf(ninja);
+        $scope.ninjas.splice(removeNinja, 1);
+        }
+
 
     $scope.ninjas=[
         {  
-             name: "ryu",
-            belt:"blavk",
-            rate: 30
+            name: "Ryu",
+            belt:"Black",
+            rate: 30,
+            available: true
         },
         {  
-             name: "rye",
-            belt:"red",
-            rate: 33
+            name: "Rye",
+            belt:"Red",
+            rate: 33,
+            available: false
         },
         {   
-            name: "chris",
-            belt:"orange",
-            rate: 43
+            name: "Chris",
+            belt:"Orange",
+            rate: 43,
+            available: true
         },
         {   
-            name: "dan",
-            belt:"blue",
-            rate: 32
+            name: "Dan",
+            belt:"Blue",
+            rate: 32,
+            available: true
         }
     
     ];
