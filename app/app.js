@@ -5,8 +5,28 @@ myNinjaApp.controller('NinjaController', [ '$scope', function($scope){
 
     $scope.removeNinja = function(ninja){
         var removeNinja = $scope.ninjas.indexOf(ninja);
+        //remove 1 element from the index removeNinja
         $scope.ninjas.splice(removeNinja, 1);
         }
+
+    $scope.submit = function(){
+        $scope.ninjas.push(
+            {
+                name: $scope.newninja.name,
+                belt: $scope.newninja.belt,
+                rate:parseInt($scope.newninja.rate),
+                available: true
+            }
+        )
+
+        // empty the form once submit button is clicked
+        $scope.newninja.name = "";
+        $scope.newninja.belt = "";
+        $scope.newninja.rate = "";
+
+        
+        
+    }
 
 
     $scope.ninjas=[
